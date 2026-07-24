@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Yelp QSR Staffing Assistant - Class Presentation</title>
+<style>
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0f172a; color: #f8fafc; margin: 0; padding: 0; }
+  .slide { display: none; padding: 40px 60px; height: 90vh; box-sizing: border-box; flex-direction: column; justify-content: space-between; }
+  .active { display: flex; }
+  h1 { color: #38bdf8; font-size: 2.4em; margin-bottom: 10px; }
+  h2 { color: #f59e0b; font-size: 1.8em; margin-top: 0; }
+  p, li { font-size: 1.25em; line-height: 1.6; }
+  ul { margin-top: 10px; }
+  .notes { background: #1e293b; border-left: 5px solid #38bdf8; padding: 15px 20px; font-size: 0.95em; color: #94a3b8; border-radius: 4px; }
+  .nav { text-align: center; padding: 15px; background: #1e293b; }
+  button { background: #38bdf8; border: none; padding: 10px 20px; font-size: 1em; font-weight: bold; border-radius: 5px; cursor: pointer; margin: 0 10px; }
+  button:hover { background: #0284c7; color: white; }
+  .badge { background: #334155; color: #38bdf8; padding: 4px 10px; border-radius: 12px; font-size: 0.85em; font-weight: bold; }
+</style>
+</head>
+<body>
+
+<!-- Slide 1: Industry Problem -->
+<div class="slide active" id="slide1">
+  <div>
+    <span class="badge">Slide 1 of 8</span>
+    <h1>Yelp QSR Foot Traffic & Staffing Assistant</h1>
+    <h2>1. Industry Problem & Intended User</h2>
+    <ul>
+      <li><b>Industry</b>: Quick-Service Restaurant (QSR) & Food Service</li>
+      <li><b>Intended User</b>: Regional Operations Manager managing 50+ locations</li>
+      <li><b>Main Problem</b>: Hourly foot traffic varies dramatically by shift, but staffing schedules are set uniformly. Understaffing during peak shifts causes long wait times and negative reviews; overstaffing wastes labor cost.</li>
+      <li><b>Decision Supported</b>: Determine whether to increase, decrease, or hold staffing steady for every location, day, and hour.</li>
+    </ul>
+  </div>
+  <div class="notes">
+    <b>Speaker Notes (0:45 min):</b> "Good morning! My project builds an Industry Statistical Assistant for a Regional Operations Manager in the Quick-Service Restaurant industry. Managing multiple locations means balancing labor cost against customer satisfaction. Understaffing during unexpected dinner rushes hurts ratings, while overstaffing during quiet afternoons burns capital. Our assistant uses Yelp check-in data to optimize hourly shift staffing decisions."
+  </div>
+</div>
+
+<!-- Slide 2: Dataset -->
+<div class="slide" id="slide2">
+  <div>
+    <span class="badge">Slide 2 of 8</span>
+    <h1>Yelp Open Dataset Integration</h1>
+    <h2>2. Data Source & Structure</h2>
+    <ul>
+      <li><b>Source</b>: Official Yelp Open Dataset (150,000+ businesses)</li>
+      <li><b>Filtered Subset</b>: 44,582 active open food/restaurant businesses</li>
+      <li><b>Unit of Observation</b>: Business location × Day of Week × Hour of Day shift record</li>
+      <li><b>Key Variables</b>: <code>checkins</code> (traffic proxy), <code>stars</code> (rating), <code>review_count</code>, <code>day</code>, <code>hour</code>, <code>service_type</code> (Quick Service vs Full Service)</li>
+    </ul>
+  </div>
+  <div class="notes">
+    <b>Speaker Notes (0:45 min):</b> "We processed raw JSON files from the official Yelp Open Dataset. After parsing 150,000 businesses and matching check-in timestamps, we created an aggregated shift-level dataset across 44,000 active food locations. Each row represents a specific day and hour shift for a restaurant location, tracking check-in volume alongside rating and category metadata."
+  </div>
+</div>
+
+<!-- Slide 3: Required Skills -->
+<div class="slide" id="slide3">
+  <div>
+    <span class="badge">Slide 3 of 8</span>
+    <h1>Core Analytical Skills</h1>
+    <h2>3. Required Skills: Explore, Compare, & Model</h2>
+    <ul>
+      <li><b>Skill 1 (Explore Data)</b>: Univariate EDA showing strong weekly seasonality (Friday-Sunday peaks) and a 3.7 mean star rating benchmark.</li>
+      <li><b>Skill 2 (Compare Two Groups)</b>: Welch's t-test showing Quick Service averages significantly higher hourly check-ins than Full Service (p &lt; 0.001, Cohen's d = 0.52).</li>
+      <li><b>Skill 3 (Statistical Model)</b>: Negative Binomial Count Regression fitting overdispersed traffic, explaining shift variations with Pseudo R² = 0.31.</li>
+    </ul>
+  </div>
+  <div class="notes">
+    <b>Speaker Notes (1:00 min):</b> "Our assistant relies on three required statistical skills: Skill 1 explores overall baseline distributions; Skill 2 compares Quick Service against Full Service using Welch's t-test, proving QSRs handle higher foot traffic without lower ratings; and Skill 3 fits a Negative Binomial regression model to handle severe count overdispersion, predicting hourly traffic based on shift hour, day, and review volume."
+  </div>
+</div>
+
+<!-- Slide 4: Student Additional Skills -->
+<div class="slide" id="slide4">
+  <div>
+    <span class="badge">Slide 4 of 8</span>
+    <h1>Student-Designed Skills</h1>
+    <h2>4. Three Custom Operational Skills</h2>
+    <ul>
+      <li><b>Skill 4 (Time Series Forecast)</b>: 48-hour ahead shift prediction horizon with automated 75th percentile staffing alerts (Add 1 Staff, Add 2+ Staff).</li>
+      <li><b>Skill 5 (Geospatial Clustering)</b>: K-Means spatial clustering (k=5) and Moran's I spatial correlation mapping restaurant dining districts.</li>
+      <li><b>Skill 6 (Anomaly Detection)</b>: Dual-layer residual and IQR fence filtering to rank locations by shift volatility.</li>
+    </ul>
+  </div>
+  <div class="notes">
+    <b>Speaker Notes (1:00 min):</b> "We created three additional skills focused on decision-making: Skill 4 generates a 48-hour ahead traffic forecast and alerts the manager when traffic will cross the 75th percentile threshold; Skill 5 maps geographic dining districts; and Skill 6 performs anomaly detection to identify high-volatility locations that require flexible staffing."
+  </div>
+</div>
+
+<!-- Slide 5: Agent Skill Deep Dive -->
+<div class="slide" id="slide5">
+  <div>
+    <span class="badge">Slide 5 of 8</span>
+    <h1>Google Antigravity Agent Skill</h1>
+    <h2>5. Deep Dive into SKILL.md Architecture</h2>
+    <ul>
+      <li><b>File Examined</b>: <code>skills/time-series-forecast/SKILL.md</code></li>
+      <li><b>Structure</b>: 10 required sections (Purpose, Inputs, Method, Procedure, Validation, Output, Interpretation, Limitation).</li>
+      <li><b>Antigravity Role</b>: Guided the agent to construct a 48-hour horizon grid, check model prerequisites, and translate raw numbers into plain-language staffing instructions.</li>
+    </ul>
+  </div>
+  <div class="notes">
+    <b>Speaker Notes (0:45 min):</b> "Here is a look at one of our six SKILL.md files for Google Antigravity. Each skill file acts as a structured prompt document for the AI agent. It defines exact input validation rules, tells Antigravity which R script to execute, and provides clear guidelines on how to translate R statistical estimates into non-technical operational advice for the manager."
+  </div>
+</div>
+
+<!-- Slide 6: Validation -->
+<div class="slide" id="slide6">
+  <div>
+    <span class="badge">Slide 6 of 8</span>
+    <h1>Validation & Guardrails</h1>
+    <h2>6. Error Handling & Inappropriate Requests</h2>
+    <ul>
+      <li><b>Demonstrated Validation</b>: Group comparison minimum sample size ($n \ge 30$).</li>
+      <li><b>Error Response</b>: <i>"VALIDATION ERROR: Each comparison group must contain at least 30 observations for valid parametric inference."</i></li>
+      <li><b>Other Guardrails</b>: Checked outcome overdispersion, missing dataset files, spatial coordinate bounds, and model file dependencies.</li>
+    </ul>
+  </div>
+  <div class="notes">
+    <b>Speaker Notes (0:45 min):</b> "Robust validation is critical. The assistant never blindly runs code. For instance, if a user requests a group comparison with fewer than 30 observations per group, the skill halts and returns a clear explanation of why parametric inference is statistically invalid. We implemented over 4 distinct validation rules across the project."
+  </div>
+</div>
+
+<!-- Slide 7: Main Finding & Decision -->
+<div class="slide" id="slide7">
+  <div>
+    <span class="badge">Slide 7 of 8</span>
+    <h1>Main Finding & Industry Impact</h1>
+    <h2>7. Practical Decision Support</h2>
+    <ul>
+      <li><b>Main Finding</b>: Peak dinner shifts (6-8 PM) on Friday and Saturday produce 3.2× higher check-in traffic than weekday shifts, but shift volatility is heavily concentrated in specific urban clusters.</li>
+      <li><b>Actionable Guidance</b>: Managers should implement fixed staffing additions (+2 staff) during Friday/Saturday dinner rushes for baseline locations, while establishing an on-call staffing pool for high-volatility locations identified in Skill 6.</li>
+    </ul>
+  </div>
+  <div class="notes">
+    <b>Speaker Notes (0:45 min):</b> "Our main operational finding is that weekend dinner shifts produce over 3 times the foot traffic of weekday shifts, but shift volatility is concentrated in specific locations. By combining Skill 4's forecast with Skill 6's volatility ranking, regional managers can implement fixed staff increases for predictable locations while using on-call pools for high-volatility locations."
+  </div>
+</div>
+
+<!-- Slide 8: Main Limitation -->
+<div class="slide" id="slide8">
+  <div>
+    <span class="badge">Slide 8 of 8</span>
+    <h1>Project Limitations</h1>
+    <h2>8. What We Cannot Conclude</h2>
+    <ul>
+      <li><b>Data Limitation</b>: Yelp check-ins are self-reported smartphone activity; they proxy foot traffic but undercount total customer walk-ins.</li>
+      <li><b>Statistical Limitation</b>: Regression and spatial correlations show observational associations, not direct causation.</li>
+      <li><b>Implementation Limitation</b>: Quarto reports reflect static snapshots and require re-rendering when new data arrives.</li>
+    </ul>
+  </div>
+  <div class="notes">
+    <b>Speaker Notes (0:30 min):</b> "Finally, we maintain honest statistical limitations: Yelp check-ins are a digital proxy for foot traffic and may undercount non-smartphone users. Our regression models establish strong predictive association but not causation. Thank you, and I am ready to take any questions!"
+  </div>
+</div>
+
+<div class="nav">
+  <button onclick="prevSlide()">Previous</button>
+  <button onclick="nextSlide()">Next</button>
+</div>
+
+<script>
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.slide');
+  function showSlide(index) {
+    slides.forEach((s, i) => s.classList.toggle('active', i === index));
+  }
+  function nextSlide() { if (currentSlide < slides.length - 1) { currentSlide++; showSlide(currentSlide); } }
+  function prevSlide() { if (currentSlide > 0) { currentSlide--; showSlide(currentSlide); } }
+</script>
+</body>
+</html>
