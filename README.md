@@ -39,7 +39,7 @@ This repository contains the complete, reproducible **Industry Statistical Assis
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/[your-username]/yelp-qsr-staffing-assistant.git
+   git clone https://github.com/[username]/yelp-qsr-staffing-assistant.git
    cd yelp-qsr-staffing-assistant
    ```
 
