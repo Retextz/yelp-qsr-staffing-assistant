@@ -1,7 +1,5 @@
 # Yelp QSR Foot Traffic & Staffing Statistical Assistant
 
-**Student Name**: [Your Name]  
-**Course**: CAP3330 R Programming - Final Project  
 **Selected Implementation Level**: **Level 1 — Quarto Statistical Report**  
 **Industry**: Quick-Service Restaurant (QSR) & Food Service  
 **Intended User**: Regional Operations Manager  
