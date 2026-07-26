@@ -100,7 +100,7 @@ Below is the sample output visualization:
 
 ---
 
-##Limitations
+## Limitations
 
 1. **Check-in Data Proxy**: Yelp check-ins rely on user smartphone activity and undercount total physical foot traffic.
 2. **Observational Model**: Regression and spatial correlations show statistical associations rather than direct causation.
