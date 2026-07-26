@@ -1,8 +1,6 @@
 ---
 title: "Yelp QSR Foot Traffic & Staffing Assistant Report"
 subtitle: "Industry Statistical Assistant for Regional Operations Managers (Level 1 Report)"
-author: "Student Name: [Your Name]"
-date: "July 24, 2026"
 format:
   pdf:
     toc: true
@@ -25,7 +23,7 @@ When a location is understaffed during unexpected peak check-in hours, long wait
 This project develops an **Industry Statistical Assistant** designed specifically for a **Regional Operations Manager**. The assistant supports one connected decision problem:
 > *"For each restaurant location, day, and hour: should staffing be increased, decreased, or held steady based on statistical foot traffic models, forecasts, and anomaly detection?"*
 
-We implement **Level 1 (Quarto Statistical Report)**, presenting six reproducible statistical agent skills built in R and orchestrated using Google Antigravity agent architecture.
+We implement **(Quarto Statistical Report)**, presenting six reproducible statistical agent skills built in R and orchestrated to use Google Antigravity agent architecture/structure.
 
 ---
 
@@ -136,7 +134,7 @@ knitr::include_graphics("output/skill_02_group_comparison.png")
 ## Validation & Operational Guidance
 - **Validation Applied**: Verified that `service_type` contains two distinct groups and that both groups meet the minimum sample size constraint ($n \ge 30$).
 - **Practical Interpretation**: Quick-service restaurants record significantly higher average hourly check-ins than full-service restaurants ($p < 0.001$). Staffing turnover models must be calibrated by service tier.
-- **Honest Limitation**: Classification is based on Yelp category tags which may miscategorize hybrid fast-casual concepts.
+- **Honest Limitation**: Classification is based on Yelp category tags, which may miscategorize hybrid fast-casual concepts.
 
 ---
 
@@ -244,12 +242,12 @@ knitr::include_graphics("output/skill_06_residual_scatter.png")
 
 # Google Antigravity and Agent Skills
 
-This project leverages six structured Google Antigravity agent skill definitions stored in `skills/`.
+This project leverages six structured files inclined to work with the Google Antigravity agent, with their corresponding definitions stored in `skills/`.
 
 ## Agent Skill Contributions and Evidence
-1. **Skill 4 (Time Series Forecast)**: Guided Antigravity to build a 48-hour shift horizon grid and map model point predictions into discrete operational tags (`Add 1 Staff`, `Add 2+ Staff`).
-2. **Skill 5 (Geospatial Clustering)**: Directed Antigravity to validate coordinate bounds and compute spatial autocorrelation metrics.
-3. **Skill 6 (Anomaly Detection)**: Executed dual-layer residual and IQR fence filtering to rank location volatility.
+1. **Skill 4 (Time Series Forecast)**: Guides Antigravity to build a 48-hour shift horizon grid and map model point predictions into discrete operational tags (`Add 1 Staff`, `Add 2+ Staff`).
+2. **Skill 5 (Geospatial Clustering)**: Directs Antigravity to validate coordinate bounds and compute spatial autocorrelation metrics.
+3. **Skill 6 (Anomaly Detection)**: Executes a dual-layer residual and IQR fence filtering to rank location volatility.
 
 - **Useful Agent Contribution**: Antigravity correctly identified count overdispersion ($\text{Variance} \gg \text{Mean}$) and automatically selected Negative Binomial regression over standard Poisson regression.
 - **Student Correction**: Antigravity initially attempted to calculate Cohen's d across all check-in rows for star ratings, causing pseudoreplication. The student corrected the R script to collapse star ratings to unique business locations first.
@@ -278,4 +276,4 @@ The report automatically imports clean RDS data, runs statistical checks, render
 - **What was learned**: Gained practical experience in end-to-end data pipelines, handling count overdispersion with Negative Binomial models, dual-layer anomaly detection, and orchestrating reproducible AI agent skills.
 - **Most difficult aspect**: Processing and aggregating multi-gigabyte JSON files in R while maintaining memory efficiency and strict data validation.
 - **Selection of Additional Skills**: The three student skills (Forecast, Spatial Clustering, Anomaly Detection) were selected to provide a complete operational decision loop: predicting future demand, mapping spatial context, and auditing risk.
-- **Future Improvements**: With more time, we would build a dynamic R Plumber API and Shiny interactive web dashboard (Level 3 implementation) for real-time manager interaction.
+- **Future Improvements**: With more time, building a dynamic R Plumber API and Shiny interactive web dashboard (Level 3 implementation) for real-time manager interaction.
