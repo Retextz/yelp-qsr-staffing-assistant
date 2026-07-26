@@ -95,7 +95,8 @@ This repository contains the complete, reproducible **Industry Statistical Assis
 
 Below is the sample output visualization:
 
-- **Traffic Anomaly Rate Heatmap**: `output/skill_06_anomaly_heatmap.png`
+- **Traffic Anomaly Rate Heatmap**: <img width="2700" height="1500" alt="skill_06_anomaly_heatmap" src="https://github.com/user-attachments/assets/23d79940-5609-4d31-b0ee-43f13f9c49fa" />
+`
 
 ---
 
