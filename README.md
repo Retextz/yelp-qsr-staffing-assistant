@@ -1,6 +1,6 @@
 # Yelp QSR Foot Traffic & Staffing Statistical Assistant
-
-**Selected Implementation Level**: **Level 1 — Quarto Statistical Report**  
+**Student Name: Alex Z**
+**Selected Implementation Level**: **Level 1**  
 **Industry**: Quick-Service Restaurant (QSR) & Food Service  
 **Intended User**: Regional Operations Manager  
 **Connected Decision Problem**: *"For each restaurant location, day, and hour: should staffing be increased, decreased, or held steady based on statistical foot traffic models, forecasts, and anomaly detection?"*  
