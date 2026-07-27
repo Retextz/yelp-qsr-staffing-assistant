@@ -1,0 +1,3 @@
+# Linguist overrides to ignore compiled HTML report from repository language statistics
+final_report.html linguist-vendored
+*.html linguist-vendored
